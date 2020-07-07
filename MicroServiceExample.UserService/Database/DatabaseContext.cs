@@ -14,7 +14,8 @@ namespace MicroServiceExample.UserService.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"data source=microserviceexample.sqlserver; initial catalog=MicroServiceExample; persist security info=True; user id=sa; password=Micr0ServiceEx@mpl3;");
+            var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+            optionsBuilder.UseSqlServer(connectionString);
         }
     }
 }

@@ -18,5 +18,4 @@ RUN dotnet publish "MicroServiceExample.UserService.csproj" -c Release -o /app/p
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-RUN Update-Database 
 ENTRYPOINT ["dotnet", "MicroServiceExample.UserService.dll"]
