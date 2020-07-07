@@ -1,0 +1,52 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "microserviceexample.frontend",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/healthcheck",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "microserviceexample.healthchecks",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/healthcheck",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELTE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/user",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "microserviceexample.userservice",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/user",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELTE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/health",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "microserviceexample.frontend",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/health/frontend",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELTE" ]
+    }
+  ]
+}

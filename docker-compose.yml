@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+    microserviceexample.apigateway:
+        image: ${DOCKER_REGISTRY-}microserviceexampleapigateway
+        build:
+            context: .
+            dockerfile: MicroServiceExample.APIGateway/Dockerfile
+    microserviceexample.healthchecks:
+        image: ${DOCKER_REGISTRY-}microserviceexamplehealthchecks
+        build:
+            context: .
+            dockerfile: MicroServiceExample.Healthchecks/Dockerfile
+    microserviceexample.userservice:
+        image: ${DOCKER_REGISTRY-}microserviceexampleuserservice
+        build:
+            context: .
+            dockerfile: MicroServiceExample.UserService/Dockerfile
+        depends_on:
+            - microserviceexample.sqlserver
+    microserviceexample.frontend:
+        image: ${DOCKER_REGISTRY-}microserviceexamplefrontend
+        build:
+            context: .
+            dockerfile: MicroServiceExample.Frontend/Dockerfile
+    microserviceexample.sqlserver:
+        image: mcr.microsoft.com/mssql/server:2019-latest
